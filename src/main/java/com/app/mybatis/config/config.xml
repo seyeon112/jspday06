@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+
+<mapper namespace="member">
+	insert
+	
+	INSERT INTO TBL_MEMBER(ID, MEMBER_EMAIL, MEMBER_PASSWORD, MEMBER_NAME)
+	VALUES(MEMBER_SEQ.NEXTVAL, #{memberEmail}, #{memberPassword}, #{memberName})
+	
+	<select id = "select" resultType="String">
+		SELECT MEMBER_EMAIL FROM TBL_MEMBER
+		WHERE MEMBER_EMAIL = #{memberEmail} AND MEMBER_PASSWORD = #{memberPassword}
+		
+	
+	</select>
+
+
+</mapper>

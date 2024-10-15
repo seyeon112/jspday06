@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="order">
+	<insert id="insert" parameterType="OrderVO">
+		INSERT INTO TBL_ORDER(ID, MEMBER_ID, PRODUCT_ID, PRODUCT_COUNT)
+		VALUES(ORDER_SEQ.NEXTVAL, #{memberId}, #{productId]})
+		
+		
+	</insert>
+	
+	<select id= "select" resultType="OrderDTO">
+		SELECT TBO.ID, PRODUCT_ID, 
+		PRODUCT_NAME, PRODUCT_PRICE, 
+		MEMBER_EMAIL, 
+		PRODUCT_COUNT * PRODUCT_PRICE AS TOTAL_PRICE
+		FROM TBL_ORDER TBO
+		JOIN TBL_MEMBER TBM
+		ON TBO.MEMBER_ID = TBM.ID
+		JOIN TBL_PRODUCT TBP 
+		ON TBO.PRODUCT_ID = TBP.ID
+		AND TBP.ID = #{memberId}
+		ORDER BY TBO.ID DESC
+	</select>
+	
+</mapper>
+

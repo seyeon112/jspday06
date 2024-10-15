@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<update id = "updateStock" parameterType= "OrderVO">
+	UPDATE TBL_PRODUCT
+	SET PRODUCT_STOCK = PRODUCT_STOCK - #{productCount}
+	WHERE ID = #{productId}
+
+</update>
